@@ -14,9 +14,9 @@ class SubscriptionWrapper extends React.Component<{ subscribe: Function }> {
   render = () => this.props.children;
 }
 
-const defaultSubscriptionDataToProps = data => data;
+const defaultSubscriptionDataToProps = (data: any) => data;
 
-const defaultUpdateQuery = (subscriptionDataToProps: Function) => (prev, { subscriptionData }) => {
+const defaultUpdateQuery = (subscriptionDataToProps: Function) => (prev: any, { subscriptionData }: any) => {
   if (!subscriptionData.data) return prev;
 
   return subscriptionDataToProps(subscriptionData.data);
@@ -27,10 +27,13 @@ export const queryWithSubscription = ({
   subscription,
   mutations,
   subscriptionDataToProps = defaultSubscriptionDataToProps,
-}: queryWithSubscriptionProps) => (Component: React.ComponentClass | (any) = Element) => {
-  const queryProps = typeof query === 'string' || query['kind'] ? { query: (query as any) as DocumentNode } : query;
+}: queryWithSubscriptionProps) => (Component: React.ComponentClass | ((props: any) => any)) => {
+  const queryProps =
+    typeof query === 'string' || (query as any)['kind'] ? { query: (query as any) as DocumentNode } : query;
   const subscriptionOptions =
-    typeof subscription === 'string' || subscription['kind'] ? { document: subscription } : subscription;
+    typeof subscription === 'string' || (subscription as any)['kind']
+      ? { document: subscription }
+      : (subscription as any);
   const updateQuery = defaultUpdateQuery(subscriptionDataToProps);
 
   return class extends React.Component {

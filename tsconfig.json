@@ -3,11 +3,17 @@
         "target": "es5",
         "jsx": "preserve",
         "sourceMap": false,
+        "lib": [
+            "es2015",
+            "esnext.asynciterable",
+            "dom"
+        ],
         "experimentalDecorators": true,
-        "noImplicitUseStrict": true,
         "removeComments": true,
         "moduleResolution": "node",
         "module": "commonjs",
+        "declaration": true,
+        "strict": true,
         "outDir": "./lib",
         "typeRoots": [
             "node_modules/@types"
