@@ -1,0 +1,35 @@
+{
+  "name": "apollo-react-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z81/apollo-react-utils.git"
+  },
+  "keywords": ["apollo", "react", "utils"],
+  "author": "z81",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/z81/apollo-react-utils/issues"
+  },
+  "homepage": "https://github.com/z81/apollo-react-utils#readme",
+  "devDependencies": {
+    "@types/react": "^16.4.18",
+    "typescript": "^3.1.4"
+  },
+  "dependencies": {
+    "@types/graphql": "^14.0.3",
+    "apollo-boost": "^0.1.19",
+    "graphql": "^14.0.2",
+    "react": "^16.6.0",
+    "react-apollo": "^2.2.4"
+  }
+}
